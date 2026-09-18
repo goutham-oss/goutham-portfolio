@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #0D0D0D;
+    color: #E6E6E6;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Keyframe animations */
+@keyframes heroReveal {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineDraw {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes strokeTravel {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1000; }
+}
+
+.reveal-delay-1 { animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards; }
+.reveal-delay-2 { animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards; }
+.reveal-delay-3 { animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s backwards; }
+.reveal-delay-4 { animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.75s backwards; }
+.reveal-delay-5 { animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.95s backwards; }
+
+.scroll-indicator-line {
+  animation: lineDraw 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Liquid Pill Button */
+.liquid-pill {
+  position: relative;
+  isolation: isolate;
+  border-color: rgba(142, 142, 142, 0.35);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.liquid-pill:hover {
+  border-color: #E6E6E6;
+  box-shadow: 0 0 25px rgba(230, 230, 230, 0.08);
+}
+.liquid-blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #E6E6E6 0%, #2B2B2B 85%);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease;
+  opacity: 0;
+  z-index: 1;
+}
+.liquid-pill:hover .liquid-blob {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+.liquid-text {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.liquid-pill:hover .liquid-text {
+  color: #0D0D0D;
+}
+.liquid-pill:hover .liquid-icon {
+  stroke: #0D0D0D;
+  transform: translateX(4px);
+}
+
+/* Scroll reveal transitions */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Perimeter animated border stroke */
+.perimeter-svg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.perimeter-rect {
+  fill: none;
+  stroke: url(#silverGradient);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 120 400;
+  animation: strokeTravel 4s linear infinite;
+}
+
+/* Skill bar animation */
+.skill-bar-fill {
+  width: 0%;
+  transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Skills Grid cards peer de-emphasis effect */
+.skills-grid:hover > .skill-card {
+  opacity: 0.72;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.skills-grid > .skill-card:hover {
+  opacity: 1 !important;
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(230, 230, 230, 0.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-delay-1, .reveal-delay-2, .reveal-delay-3, .reveal-delay-4, .reveal-delay-5, .reveal-on-scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-indicator-line, .perimeter-rect {
+    animation: none !important;
+    transform: none !important;
+  }
+  .skill-bar-fill {
+    transition: none !important;
+  }
+}
