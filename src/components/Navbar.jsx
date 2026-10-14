@@ -241,7 +241,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(false)}
           className="mt-4 px-6 py-2.5 border border-[#E6E6E6]/40 rounded-full font-mono text-xs tracking-[0.25em] uppercase text-[#E6E6E6]"
         >
-          RESUME
+          MYRESUME
         </a>
       </div>
     </>
