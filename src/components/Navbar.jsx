@@ -125,7 +125,7 @@ export default function Navbar() {
                 : 'text-[#8E8E8E] hover:text-[#E6E6E6]'
             }`}
           >
-            MY WORK
+            WORK
           </Link>
 
           <button
