@@ -214,7 +214,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(false)}
           className="font-mono text-base tracking-[0.3em] uppercase text-[#8E8E8E] hover:text-[#E6E6E6] transition-colors"
         >
-          WORK
+          MYWORK
         </Link>
         <button
           onClick={() => scrollToSection('about')}
