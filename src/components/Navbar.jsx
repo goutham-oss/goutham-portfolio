@@ -125,7 +125,7 @@ export default function Navbar() {
                 : 'text-[#8E8E8E] hover:text-[#E6E6E6]'
             }`}
           >
-            WORK
+            MY WORK
           </Link>
 
           <button
@@ -214,7 +214,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(false)}
           className="font-mono text-base tracking-[0.3em] uppercase text-[#8E8E8E] hover:text-[#E6E6E6] transition-colors"
         >
-          MYWORK
+          WORK
         </Link>
         <button
           onClick={() => scrollToSection('about')}
@@ -241,7 +241,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(false)}
           className="mt-4 px-6 py-2.5 border border-[#E6E6E6]/40 rounded-full font-mono text-xs tracking-[0.25em] uppercase text-[#E6E6E6]"
         >
-          MYRESUME
+          RESUME
         </a>
       </div>
     </>
